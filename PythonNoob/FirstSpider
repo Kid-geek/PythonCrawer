@@ -1,0 +1,4 @@
+from urllib import request
+#一行获取网页内容
+data=request.urlopen("http://www.csdn.net").read().decode('utf-8')
+print(data)
