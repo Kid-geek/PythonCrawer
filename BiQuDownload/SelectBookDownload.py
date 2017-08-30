@@ -2,6 +2,7 @@ from urllib import request
 from urllib.parse import quote
 from bs4 import BeautifulSoup
 import  string
+import re
 
 def selectBook(book_name):
     search_url = r'http://zhannei.baidu.com/cse/search?q=' + book_name + '&click=1&s=2758772450457967865&nsid='
@@ -14,13 +15,17 @@ def selectBook(book_name):
     res = request.urlopen(req)
     html = res.read().decode('utf-8')
     book_name_soup = BeautifulSoup(html, 'lxml')
-    div = book_name_soup.find_all('div', class_='result-item result-game-item')
+    div = book_name_soup.find_all('div',class_='game-legend-a')
     a_soup = BeautifulSoup(str(div), 'lxml')
-    a_href = a_soup.a.get('href')
-    return a_href
+    regex = r"location='([\s\S]*?)'\""
+    matches=re.search(regex,str(a_soup))
+    # 书本链接为第一个搜索结果
+    a_href=matches.group(1)
+    print(a_href)
+    return str(a_href)
 
-def downTXT():
-    book_name = input('要下载的书名:')
+def downTXT(book_name):
+
     bookList_url = selectBook(book_name)
     file = open(book_name + '.txt', 'w', encoding='utf-8')
     head = {}
@@ -60,12 +65,11 @@ def downTXT():
                 file.write('\n\n')
                 print("已下载:" + str((index / numbers) * 100) + '\r')
                 index += 1
-            file.close()
-
-
+    file.close()
 
 if __name__ == '__main__':
-    downTXT()
+    book_name = input('要下载的书名:')
+    downTXT(book_name)
 
 
 
