@@ -1,0 +1,6 @@
+import requests
+
+seesion=requests.Session()
+cookie={'Cookie':'d_c0="AIBCHT7nHAyPTsr_xEIJQkBwYHl_14hMXec=|1500878097"; _zap=fd417b36-eeda-4032-be19-229cdb1cb87a; r_cap_id="NDRmOGY0ZTIxOTMxNDBkNzhjMGQxZWFiYzhhMjRmOGY=|1502416648|bd0636e81a36479fd451a1f3bdc07372849b29fb"; cap_id="ZDEyNmNkYTVhZGJlNGM0NWFmNWIzOTg2M2U2N2FiNjI=|1502416648|018911f79487a1e747fb67bc725118b81bbfc943"; z_c0=Mi4wQUJCS0pBT1Q0Z2dBZ0VJZFB1Y2NEQmNBQUFCaEFsVk5HWnkwV1FDNGtLUXU3OTV6TWJ1UHV1RUNzTlVZREdBeGtn|1502416665|b3ddfffe514040dae4eec4bca976801958284c22; _xsrf=5964cbd816611f5e91ee2ce6deff187c; q_c1=686067a9517e4e6caf889b8ec0ca31ef|1503538124000|1500878095000; q_c1=686067a9517e4e6caf889b8ec0ca31ef|1503538124000|1500878095000; __utma=51854390.2119312926.1502327631.1504581478.1504591827.14; __utmz=51854390.1504507765.12.8.utmcsr=zhihu.com|utmccn=(referral)|utmcmd=referral|utmcct=/question/29925879; __utmv=51854390.100--|2=registration_date=20151021=1^3=entry_date=20151021=1; aliyungf_tc=AQAAAAd6B1zULwAA4SRsO6Xrg76NR0ht; _xsrf=5964cbd816611f5e91ee2ce6deff187c'}
+html=seesion.get('https://www.zhihu.com',cookies=cookie).content
+print(html.decode())
