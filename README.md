@@ -20,3 +20,9 @@ python系统学习
 ### 6.JD
 运用selenium抢购京东商品
 
+### 7.DengLu
+模拟登录 1.知乎  2.豆瓣  3.机锋网  4.cookie登录
+
+### 8.LuoWangMusic
+下载落网音乐
+
